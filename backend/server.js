@@ -7,7 +7,7 @@ const savedJobRouter = require('./src/routes/savedJobRouter')
 const notificationRouter = require('./src/routes/notificationRouter')
 
 const cors = require('cors')
-const config = require('./Src/Config/config')
+const config = require('./src/config/config')
 const morgan = require('morgan')
 
 const app = express()
