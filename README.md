@@ -1,30 +1,43 @@
 # 🧳 Job-Seeker
 
-A full-stack job portal platform connecting **job seekers** with **recruiters** — built with the MERN stack.
+> A full-stack job portal platform connecting **job seekers** with recruiters — built with the MERN stack.
 
-🔗 **Live Demo**: [job-seeker-prince.vercel.app](https://job-seeker-prince.vercel.app/)
+<p align="center">
+  <img src="https://img.shields.io/badge/MERN-Full%20Stack-00C896?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/React-Vite-61DBFB?style=for-the-badge&logo=react&logoColor=black" />
+  <img src="https://img.shields.io/badge/Node.js-Backend-3C873A?style=for-the-badge&logo=node.js&logoColor=white" />
+  <img src="https://img.shields.io/badge/MongoDB-Database-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white" />
+</p>
+
+---
+
+## 🔗 Live Demo
+
+👉 [job-seeker-prince.vercel.app](https://job-seeker-prince.vercel.app/)
 
 ---
 
 ## ✨ Features
 
-- 🔐 **Authentication** — Secure JWT-based signup, login & profile management
-- 📋 **Job Posts** — Recruiters can create and manage job listings
-- 📨 **Applications** — Job seekers can apply and track application status
-- 🔖 **Saved Jobs** — Bookmark jobs to revisit later
-- 🔔 **Notifications** — Real-time notification system with read/clear support
+- 🔐 JWT Authentication (Login / Signup / Profile)
+- 📋 Recruiter job post management
+- 📨 Job applications with tracking system
+- 🔖 Save / Unsave jobs
+- 🔔 Real-time notifications system
+- 👥 Role-based access (Recruiter / Job Seeker)
+- ⚡ REST API integration
 
 ---
 
 ## 🛠️ Tech Stack
 
-| Layer     | Technology                        |
-|-----------|-----------------------------------|
-| Frontend  | React, Vite                       |
-| Backend   | Node.js, Express.js               |
-| Database  | MongoDB (Mongoose)                |
-| Auth      | JWT (stored in localStorage)      |
-| Hosting   | Vercel (frontend), Render (backend) |
+| Layer    | Technology |
+|----------|------------|
+| Frontend | React, Vite |
+| Backend  | Node.js, Express.js |
+| Database | MongoDB (Mongoose) |
+| Auth     | JWT (localStorage) |
+| Hosting  | Vercel (Frontend), Render (Backend) |
 
 ---
 
@@ -32,149 +45,127 @@ A full-stack job portal platform connecting **job seekers** with **recruiters** 
 
 ```
 job-seeker/
-├── backend/      # Express server — models, routes, controllers
-└── frontend/     # React (Vite) — UI & client-side logic
+├── backend/   → Express API (Routes, Models, Controllers)
+└── frontend/  → React UI (Vite)
 ```
 
 ---
 
 ## ⚙️ Local Setup
 
-### Prerequisites
+### 📌 Prerequisites
 
-- [Node.js](https://nodejs.org/) (LTS recommended)
-- MongoDB connection string (e.g. MongoDB Atlas)
+- Node.js (LTS)
+- MongoDB Atlas / Local MongoDB
 
 ---
 
-### 1️⃣ Backend
+### 🧩 1. Backend Setup
 
 ```bash
 cd backend
 npm install
 ```
 
-Create a `.env` file inside `backend/`:
+Create `.env`:
 
 ```env
 MONGO_URL=your_mongodb_connection_string
 FRONTEND_URL=http://localhost:5173
 ```
 
-Start the development server:
+Run server:
 
 ```bash
 npm run dev
 ```
 
-> Backend runs on **port 5000** by default.
+👉 Runs on `http://localhost:5000`
 
 ---
 
-### 2️⃣ Frontend
+### 🎨 2. Frontend Setup
 
 ```bash
 cd frontend
 npm install
 ```
 
-Create a `.env` file inside `frontend/`:
+Create `.env`:
 
 ```env
 VITE_BACKEND_URL=http://localhost:5000
 ```
 
-Start the development server:
+Run app:
 
 ```bash
 npm run dev
 ```
 
-> Frontend runs at **http://localhost:5173** by default.
+👉 Runs on `http://localhost:5173`
 
 ---
 
-## 🚀 Running Locally
-
-Open two terminal windows:
+## 🚀 Run Full Project
 
 ```bash
-# Terminal 1 — Backend
+# Terminal 1
 cd backend && npm run dev
 
-# Terminal 2 — Frontend
+# Terminal 2
 cd frontend && npm run dev
 ```
 
 ---
 
-## 🌐 API Reference
+## 🌐 API Overview
 
 Base URL: `VITE_BACKEND_URL/api`
 
-### 👤 User
-| Method | Endpoint               | Description         |
-|--------|------------------------|---------------------|
-| POST   | `/api/user/login`      | Login               |
-| POST   | `/api/user/signup`     | Register            |
-| PUT    | `/api/user/update/:id` | Update profile      |
+### 👤 User APIs
+- Login / Signup
+- Profile Update
 
-### 🏢 Recruiter
-| Method | Endpoint                          | Description              |
-|--------|-----------------------------------|--------------------------|
-| GET/POST | `/api/recruiter/posts`          | All posts / create post  |
-| GET    | `/api/recruiter/myposts/:username`| Recruiter's own posts    |
-| GET    | `/api/recruiter/applicants/:postId` | Applicants for a post  |
+### 🏢 Recruiter APIs
+- Create / Manage Jobs
+- View Applicants
+- Manage Posts
 
-### 📨 Applications
-| Method | Endpoint                         | Description             |
-|--------|----------------------------------|-------------------------|
-| POST   | `/api/applied/apply`             | Apply to a job          |
-| GET    | `/api/applied/check/:userId/:postId` | Check if applied    |
-| GET    | `/api/applied/:userId`           | All applications        |
-| PUT    | `/api/applied/status/:id`        | Update status           |
+### 📨 Application APIs
+- Apply to Jobs
+- Track Status
+- View Applications
 
-### 🔖 Saved Jobs
-| Method | Endpoint                          | Description         |
-|--------|-----------------------------------|---------------------|
-| POST   | `/api/saved/save`                 | Save a job          |
-| DELETE | `/api/saved/unsave/:userId/:postId` | Unsave a job      |
-| GET    | `/api/saved/check/:userId/:postId` | Check if saved     |
-| GET    | `/api/saved/:userId`              | All saved jobs      |
+### 🔖 Saved Jobs APIs
+- Save / Unsave Jobs
+- Fetch Saved Jobs
 
-### 🔔 Notifications
-| Method | Endpoint                             | Description              |
-|--------|--------------------------------------|--------------------------|
-| GET    | `/api/notifications/:userId`         | All notifications        |
-| GET    | `/api/notifications/unread/:userId`  | Unread notifications     |
-| PUT    | `/api/notifications/read/:id`        | Mark one as read         |
-| PUT    | `/api/notifications/readall/:userId` | Mark all as read         |
-| DELETE | `/api/notifications/delete/:id`      | Delete one               |
-| DELETE | `/api/notifications/clear/:userId`   | Clear all                |
+### 🔔 Notification APIs
+- Read / Unread Notifications
+- Mark as Read / Clear All
 
 ---
 
 ## ☁️ Deployment
 
-This project is deployed using:
-
-- **Frontend** → [Vercel](https://vercel.com/)
-- **Backend** → [Render](https://render.com/)
-
-### Environment Variables for Production
-
-**Backend `.env`:**
-```env
-MONGO_URL=your_production_mongodb_url
-FRONTEND_URL=https://job-seeker-prince.vercel.app
-```
-
-**Frontend `.env`:**
-```env
-VITE_BACKEND_URL=https://your-backend.onrender.com
-```
-
-> ⚠️ Make sure `FRONTEND_URL` in the backend matches your Vercel domain exactly — this is used for CORS configuration.
+- 🌐 Frontend: Vercel  
+- ⚙️ Backend: Render  
+- 🗄️ Database: MongoDB Atlas  
 
 ---
 
+## 🔐 Production Config
+
+### Backend `.env`
+
+```env
+MONGO_URL=your_production_db
+FRONTEND_URL=https://job-seeker-prince.vercel.app
+```
+
+### Frontend `.env`
+
+```env
+VITE_BACKEND_URL=https://your-backend.onrender.com
+```
